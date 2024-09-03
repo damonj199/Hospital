@@ -1,6 +1,11 @@
-﻿namespace Hospital.Controllers
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace Hospital.Api.Controllers
 {
-    public class DoctorController
+    [ApiController]
+    [Route("/api/doctors")]
+    public class DoctorController : Controller
     {
+        //[HttpGet]
     }
 }
