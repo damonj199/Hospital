@@ -32,11 +32,27 @@ public class DoctorController : Controller
         return Ok();
     }
 
-    [HttpPut("/by-id/{id}")]
-    public async Task<ActionResult> UpdateDoctorByIdAsync(Guid id, DoctorDto doctor)
-    {
-        await _doctorService.UpdateDoctorAsync(id, doctor);
+    //[HttpPut("/by-id/{id}")]
+    //public async Task<ActionResult> UpdateDoctorByIdAsync(Guid id, DoctorDto doctor)
+    //{
+    //    await _doctorService.UpdateDoctorAsync(id, doctor);
 
-        return Ok();
-    }
+    //    return Ok();
+    //}
+
+    //[HttpGet("/by-id/{id}")]
+    //public async Task<ActionResult<DoctorDto>> GetDoctorByIdAsync(Guid id)
+    //{
+    //    var doc = await _doctorService.GetDoctorBiIdAsync(id);
+
+    //    return Ok(doc);
+    //}
+
+    //[HttpGet("/list-doctors")]
+    //public async Task<ActionResult<List<DoctorDto>>> GetDoctorsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
+    //{
+    //    var doctors = await _doctorService.GetDoctorsListAsync(sortBy, page, pageSize);
+
+    //    return Ok(doctors);
+    //}
 }

@@ -1,6 +1,7 @@
 ﻿using Hospital.Bll.IService;
 using Hospital.Core.Dtos;
 using Hospital.Dal.IRepository;
+using Hospital.Dal.Repository;
 
 namespace Hospital.Bll.Service;
 
@@ -24,4 +25,23 @@ public class PatientService : IPatientService
     {
         await _patientRepository.DeletePatientAsync(patient);
     }
+
+    public async Task<PatientDto> GetPatientBiIdAsync(Guid id)
+    {
+        var patient = await _patientRepository.GetPatientByIdAsync(id);
+
+        return patient;
+    }
+
+    //public async Task UpdatePatientAsync(Guid id, PatientDto patient)
+    //{
+    //    await _patientRepository.UpdatePatientAsync(id, patient);
+    //}
+
+    //public async Task<List<PatientDto>> GetPatientsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
+    //{
+    //    var patients = await _patientRepository.CetPatientsListAsync(sortBy, page, pageSize);
+
+    //    return patients;
+    //}
 }
