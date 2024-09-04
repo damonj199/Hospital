@@ -1,3 +1,4 @@
+using Hospital.Bll;
 using Hospital.Dal;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +12,9 @@ builder.Services.AddDbContext<HospitalDbContext>(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.ConfigureBllServices();
+builder.Services.ConfigureDalServices();
 
 var app = builder.Build();
 
