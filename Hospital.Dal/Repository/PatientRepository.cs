@@ -32,53 +32,53 @@ public class PatientRepository : BaseRepository, IPatientRepository
         return patient;
     }
 
-    //public async Task UpdatePatientAsync(Guid id, PatientDto patient)
-    //{
-    //    var pat = _ctx.Patients.Find(id);
+    public async Task UpdatePatientAsync(Guid id, PatientDto patient)
+    {
+        var pat = _ctx.Patients.Find(id);
 
-    //    pat.Id = id;
-    //    pat.Name = patient.Name;
-    //    pat.Surname = patient.Surname;
-    //    pat.Patronymic = patient.Patronymic;
-    //    pat.Address = patient.Address;
-    //    pat.DateOfBirth = patient.DateOfBirth;
-    //    pat.Sector = patient.Sector;
+        pat.Id = id;
+        pat.Name = patient.Name;
+        pat.Surname = patient.Surname;
+        pat.Patronymic = patient.Patronymic;
+        pat.Address = patient.Address;
+        pat.DateOfBirth = patient.DateOfBirth;
+        pat.Sector = patient.Sector;
 
-    //    await _ctx.SaveChangesAsync();
-    //}
+        await _ctx.SaveChangesAsync();
+    }
 
-    //public async Task<List<PatientDto>> CetPatientsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
-    //{
-    //    var patients = _ctx.Patients.AsQueryable();
+    public async Task<List<PatientDto>> CetPatientsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
+    {
+        var patients = _ctx.Patients.AsQueryable();
 
-    //    switch (sortBy.ToLower())
-    //    {
-    //        case "name":
-    //            patients = patients.OrderBy(d => d.Name);
-    //            break;
-    //        case "surname":
-    //            patients = patients.OrderBy(d => d.Surname);
-    //            break;
-    //        case "patronymic":
-    //            patients = patients.OrderBy(d => d.Patronymic);
-    //            break;
-    //        case "office":
-    //            patients = patients.OrderBy(d => d.Address);
-    //            break;
-    //        case "specialization":
-    //            patients = patients.OrderBy(d => d.DateOfBirth);
-    //            break;
-    //        case "sector":
-    //            patients = patients.OrderBy(d => d.Sector);
-    //            break;
+        switch (sortBy.ToLower())
+        {
+            case "name":
+                patients = patients.OrderBy(d => d.Name);
+                break;
+            case "surname":
+                patients = patients.OrderBy(d => d.Surname);
+                break;
+            case "patronymic":
+                patients = patients.OrderBy(d => d.Patronymic);
+                break;
+            case "office":
+                patients = patients.OrderBy(d => d.Address);
+                break;
+            case "specialization":
+                patients = patients.OrderBy(d => d.DateOfBirth);
+                break;
+            case "sector":
+                patients = patients.OrderBy(d => d.Sector);
+                break;
 
-    //        default:
-    //            patients = patients.OrderBy(d => d.Name);
-    //            break;
-    //    }
+            default:
+                patients = patients.OrderBy(d => d.Name);
+                break;
+        }
 
-    //    var pagedPatiens = patients.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        var pagedPatiens = patients.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-    //    return pagedPatiens;
-    //}
+        return pagedPatiens;
+    }
 }

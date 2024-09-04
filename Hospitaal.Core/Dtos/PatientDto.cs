@@ -9,7 +9,7 @@ public class PatientDto
     public string Surname { get; set; }
     public string Patronymic { get; set; }
     public string Address { get; set; }
-    public DateOnly DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; }
     public Gender Gender { get; set; }
     public SectorDto Sector { get; set; }
 }

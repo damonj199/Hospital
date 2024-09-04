@@ -32,15 +32,15 @@ public class DoctorService : IDoctorService
         return doctor;
     }
 
-    //public async Task UpdateDoctorAsync(Guid id, DoctorDto doctor)
-    //{
-    //    await _doctorRepository.UpdateDoctorAsync(id, doctor);
-    //}
+    public async Task UpdateDoctorAsync(Guid id, DoctorDto doctor)
+    {
+        await _doctorRepository.UpdateDoctorAsync(id, doctor);
+    }
 
-    //public async Task<List<DoctorDto>> GetDoctorsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
-    //{
-    //    var doctors = await _doctorRepository.CetDoctorsListAsync(sortBy, page, pageSize);
+    public async Task<List<DoctorDto>> GetDoctorsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
+    {
+        var doctors = await _doctorRepository.CetDoctorsListAsync(sortBy, page, pageSize);
 
-    //    return doctors;
-    //}
+        return doctors;
+    }
 }

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hospital.Api.Controllers;
 
 [ApiController]
-[Route("/api/doctors")]
+[Route("/api/doctors/")]
 public class DoctorController : Controller
 {
     private readonly IDoctorService _doctorService;
@@ -23,7 +23,7 @@ public class DoctorController : Controller
         return Ok(doctor.Id);
     }
 
-    [HttpDelete("/by-id/{id}")]
+    [HttpDelete("by-id/{id}")]
     public async Task<ActionResult> DeleteDoctorAsync(Guid id)
     {
         DoctorDto doctor = await _doctorService.GetDoctorBiIdAsync(id);
@@ -32,27 +32,27 @@ public class DoctorController : Controller
         return Ok();
     }
 
-    //[HttpPut("/by-id/{id}")]
-    //public async Task<ActionResult> UpdateDoctorByIdAsync(Guid id, DoctorDto doctor)
-    //{
-    //    await _doctorService.UpdateDoctorAsync(id, doctor);
+    [HttpPut("by-id/{id}")]
+    public async Task<ActionResult> UpdateDoctorByIdAsync(Guid id, DoctorDto doctor)
+    {
+        await _doctorService.UpdateDoctorAsync(id, doctor);
 
-    //    return Ok();
-    //}
+        return Ok();
+    }
 
-    //[HttpGet("/by-id/{id}")]
-    //public async Task<ActionResult<DoctorDto>> GetDoctorByIdAsync(Guid id)
-    //{
-    //    var doc = await _doctorService.GetDoctorBiIdAsync(id);
+    [HttpGet("by-id/{id}")]
+    public async Task<ActionResult<DoctorDto>> GetDoctorByIdAsync(Guid id)
+    {
+        var doc = await _doctorService.GetDoctorBiIdAsync(id);
 
-    //    return Ok(doc);
-    //}
+        return Ok(doc);
+    }
 
-    //[HttpGet("/list-doctors")]
-    //public async Task<ActionResult<List<DoctorDto>>> GetDoctorsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
-    //{
-    //    var doctors = await _doctorService.GetDoctorsListAsync(sortBy, page, pageSize);
+    [HttpGet("list")]
+    public async Task<ActionResult<List<DoctorDto>>> GetDoctorsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
+    {
+        var doctors = await _doctorService.GetDoctorsListAsync(sortBy, page, pageSize);
 
-    //    return Ok(doctors);
-    //}
+        return Ok(doctors);
+    }
 }

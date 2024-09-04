@@ -33,15 +33,15 @@ public class PatientService : IPatientService
         return patient;
     }
 
-    //public async Task UpdatePatientAsync(Guid id, PatientDto patient)
-    //{
-    //    await _patientRepository.UpdatePatientAsync(id, patient);
-    //}
+    public async Task UpdatePatientAsync(Guid id, PatientDto patient)
+    {
+        await _patientRepository.UpdatePatientAsync(id, patient);
+    }
 
-    //public async Task<List<PatientDto>> GetPatientsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
-    //{
-    //    var patients = await _patientRepository.CetPatientsListAsync(sortBy, page, pageSize);
+    public async Task<List<PatientDto>> GetPatientsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
+    {
+        var patients = await _patientRepository.CetPatientsListAsync(sortBy, page, pageSize);
 
-    //    return patients;
-    //}
+        return patients;
+    }
 }

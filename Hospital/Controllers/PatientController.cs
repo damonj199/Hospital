@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Hospital.Controllers;
 
 [ApiController]
-[Route("/api/patients")]
+[Route("/api/patients/")]
 public class PatientController : Controller
 {
     private readonly IPatientService _patientService;
@@ -24,7 +24,7 @@ public class PatientController : Controller
         return Ok(patient.Id);
     }
 
-    [HttpDelete("/by-id/{id}")]
+    [HttpDelete("by-id/{id}")]
     public async Task<ActionResult> DeletePatientAsync(Guid id)
     {
         var patient = await _patientService.GetPatientBiIdAsync(id);
@@ -33,27 +33,27 @@ public class PatientController : Controller
         return Ok();
     }
 
-    //[HttpPut("/by-id/{id}")]
-    //public async Task<ActionResult> UpdatePatientByIdAsync(Guid id, PatientDto patient)
-    //{
-    //    await _patientService.UpdatePatientAsync(id, patient);
+    [HttpPut("by-id/{id}")]
+    public async Task<ActionResult> UpdatePatientByIdAsync(Guid id, PatientDto patient)
+    {
+        await _patientService.UpdatePatientAsync(id, patient);
 
-    //    return Ok();
-    //}
+        return Ok();
+    }
 
-    //[HttpGet("/by-id/{id}")]
-    //public async Task<ActionResult<PatientDto>> GetPatientByIdAsync(Guid id)
-    //{
-    //    var patient = await _patientService.GetPatientBiIdAsync(id);
+    [HttpGet("by-id/{id}")]
+    public async Task<ActionResult<PatientDto>> GetPatientByIdAsync(Guid id)
+    {
+        var patient = await _patientService.GetPatientBiIdAsync(id);
 
-    //    return Ok(patient);
-    //}
+        return Ok(patient);
+    }
 
-    //[HttpGet("/list-doctors")]
-    //public async Task<ActionResult<List<PatientDto>>> GetPatientsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
-    //{
-    //    var patients = await _patientService.GetPatientsListAsync(sortBy, page, pageSize);
+    [HttpGet("list")]
+    public async Task<ActionResult<List<PatientDto>>> GetPatientsListAsync(string sortBy = "Name", int page = 1, int pageSize = 10)
+    {
+        var patients = await _patientService.GetPatientsListAsync(sortBy, page, pageSize);
 
-    //    return Ok(patients);
-    //}
+        return Ok(patients);
+    }
 }
